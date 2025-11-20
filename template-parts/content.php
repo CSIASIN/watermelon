@@ -22,14 +22,14 @@
 			?>
 			<div class="entry-meta">
 				<?php
-				wm_posted_on();
-				wm_posted_by();
+				//wm_posted_on();
+				//wm_posted_by();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php wm_post_thumbnail(); ?>
+	<?php //wm_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
@@ -58,6 +58,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php wm_entry_footer(); ?>
+		<?php //wm_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

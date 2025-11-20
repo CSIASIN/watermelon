@@ -6,11 +6,16 @@
  *
  * @package Watermelon_Wordpress_Theme
  */
-
-if ( ! defined( '_S_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
-}
+ 
+/**
+ * Load required files
+ */
+require_once('inc/globals.php');                // Global Variables
+require_once('inc/breadcrumb.php');             // Breadcrumbs
+require_once('inc/navmenu.php');                // Navmenu
+require_once('inc/navwalker.php');              // Bootstrap Navwalker
+require_once('inc/pagination.php');             // Pagination
+require_once('inc/enqueue.php');                // Enqueue
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -136,7 +141,7 @@ add_action( 'widgets_init', 'wm_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
- */
+
 function wm_scripts() {
 	wp_enqueue_style( 'wm-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'wm-style', 'rtl', 'replace' );
@@ -146,8 +151,8 @@ function wm_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-}
-add_action( 'wp_enqueue_scripts', 'wm_scripts' );
+} */
+//add_action( 'wp_enqueue_scripts', 'wm_scripts' );
 
 /**
  * Implement the Custom Header feature.
@@ -181,4 +186,44 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
+}
+
+
+
+add_action('wp_ajax_ce_load_more_cat_posts', 'ce_load_more_cat_posts');
+add_action('wp_ajax_nopriv_ce_load_more_cat_posts', 'ce_load_more_cat_posts');
+function ce_load_more_cat_posts()
+{
+	       $query = new WP_Query(
+                                array(
+                            'posts_per_page' => 5,
+                            'cat' => $_POST['catid'],
+                            'post_status' => 'publish',
+                            'orderby' => 'rand',
+                            'order' => 'ASC'
+                                )
+                        );
+						
+  //  global $wpdb;
+  //  $paged=$_POST['paged']*500;
+//    $query= stripslashes($_POST['query']);
+  //  $allColorNames = $wpdb->get_results($query." limit $paged,500");
+	
+                    $i = 1;
+                        if ($query->have_posts()) :
+                            while ($query->have_posts()):$query->the_post();
+							$excerpt = get_the_excerpt();
+						
+                                ?>
+                                <h3 class="jumbotron-heading h4 mb-3"><a href="<?php echo get_the_permalink();?>" title="<?php echo get_the_title();?>"> <?php echo get_the_title();?></a></h3>
+                                <p class="font-weight-light text-muted border-bottom" >by <?php echo get_the_author() ;?> | Last Updated on <?php echo get_the_modified_date();?> | Created on <?php echo get_the_date();?></p>
+                                <?php
+                                $i++;
+                            endwhile;
+                            
+                            wp_reset_postdata();
+                        else:
+                            echo "0";
+                        endif;
+    die(0);
 }
