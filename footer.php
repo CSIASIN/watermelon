@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying the footer
  *
@@ -11,24 +12,26 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'wm' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'wm' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'wm' ), 'wm', '<a href="https://www.akhtarfahim">FAHIM AKHTAR</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+<footer id="colophon" class="site-footer">
+    <div class="site-info">
+        <a href="<?php echo esc_url(__('https://wordpress.org/', 'wm')); ?>">
+            <?php
+            /* translators: %s: CMS name, i.e. WordPress. */
+            printf(esc_html__('Proudly powered by %s', 'wm'), 'WordPress');
+            ?>
+        </a>
+        <span class="sep"> | </span>
+        <?php
+        /* translators: 1: Theme name, 2: Theme author. */
+        printf(esc_html__('Theme: %1$s by %2$s.', 'wm'), 'wm', '<a href="https://www.akhtarfahim">FAHIM AKHTAR</a>');
+        ?>
+    </div><!-- .site-info -->
+</footer><!-- #colophon -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
+
+<?php if (get_theme_mod('theme_mode_setting', true)) : ?>
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"> <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)"> <svg class="bi my-1 theme-icon-active" aria-hidden="true">
                 <use href="#circle-half"></use>
             </svg> <span class="visually-hidden" id="bd-theme-text">Toggle theme</span> </button>
@@ -56,5 +59,8 @@
                     </svg> </button> </li>
         </ul>
     </div>
+<?php endif; ?>
+
 </body>
+
 </html>

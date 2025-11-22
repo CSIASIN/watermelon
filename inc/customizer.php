@@ -52,69 +52,32 @@ add_action('customize_register', 'wm_site_logo');
 
 
 
+require_once('wm_customizer_panel_setting/header_js.php');
+require_once('wm_customizer_panel_setting/footer_js.php');
+require_once('wm_customizer_panel_setting/layout.php');
 
-function wm_navbar_customizer_settings($wp_customize)
+require_once('wm_customizer_panel_setting/theme_mode_toggle.php');
+
+require_once('wm_customizer_panel_setting/responsive.php');
+require_once('wm_customizer_panel_setting/colors.php');
+require_once('wm_customizer_panel_setting/menu.php');
+require_once('wm_customizer_panel_setting/logo.php');
+
+
+
+
+function wm_customizer_settings_panel($wp_customize)
 {
+
 	$wp_customize->add_panel(
-		'header_navigation_panel', // corrected spelling
+		'global_settings_panel',
 		array(
-			'title' => __('Header & Navigation'),
-			'description' => esc_html__('Adjust your Header and Navigation sections.'), // Include html tags such as 
-			'priority' => 160, // Not typically needed. Default is 160
-			'capability' => 'edit_theme_options', // Not typically needed. Default is edit_theme_options
-			'theme_supports' => '', // Rarely needed
-			'active_callback' => '', // Rarely needed
-		)
-	);
-
-	// Then add the section inside that panel
-	$wp_customize->add_section(
-		'sample_custom_controls_section',
-		array(
-			'title' => __('Sample Custom Controls'),
-			'description' => esc_html__('These are an example of Customizer Custom Controls.'),
-			'panel' => 'header_navigation_panel', // Only needed if adding your Section to a Panel
-			'priority' => 160, // Not typically needed. Default is 160
-			'capability' => 'edit_theme_options', // Not typically needed. Default is edit_theme_options
-			'theme_supports' => '', // Rarely needed
-			'active_callback' => '', // Rarely needed
-			'description_hidden' => 'false', // Rarely needed. Default is False
-		)
-	);
-
-	$wp_customize->add_setting(
-		'sample_default_text',
-		array(
-			'default' => '',
-			'transport' => 'refresh',
-			'type' => 'theme_mod',
+			'title' => __('Global Settings'),
+			'description' => esc_html__('Adjust your sections.'),
+			'priority' => 1,
 			'capability' => 'edit_theme_options',
-		)
-	);
-
-	// And a control
-	$wp_customize->add_control(
-		'sample_default_text',
-		array(
-			'default' => '',
-			'transport' => 'refresh',
-			'type' => 'theme_mod',
-			'capability' => 'edit_theme_options',
-			'theme_supports' => '',
-			'validate_callback' => '',
-			'sanitize_callback' => '',
-			'sanitize_js_callback' => '',
-			'dirty' => false,
-		)
-	);
-	$wp_customize->add_control(
-		'sample_default_text',
-		array(
-			'label' => __('Sample Text Input'),
-			'section' => 'sample_custom_controls_section',
-			'type' => 'text',
 		)
 	);
 }
-add_action('customize_register', 'wm_navbar_customizer_settings');
 
+add_action('customize_register', 'wm_customizer_settings_panel');

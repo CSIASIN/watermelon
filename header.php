@@ -26,9 +26,9 @@
 		.bi {
     width: 1em;
     height: 1em;
-    vertical-align: -.125em
+    vertical-align: -.125em;
     fill: currentcolor;
-}
+  }
     </style>
 	    <script>
         var ajaxurl = "<?php echo admin_url("admin-ajax.php") ?>";

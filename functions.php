@@ -227,3 +227,13 @@ function ce_load_more_cat_posts()
                         endif;
     die(0);
 }
+
+
+function wm_footer_js()
+{
+	$footer_js = get_theme_mod('footer_js_code', '');
+	if (!empty($footer_js)) {
+		echo "{$footer_js}";
+	}
+}
+add_action('wp_footer', 'wm_footer_js');
