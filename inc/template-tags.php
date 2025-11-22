@@ -17,8 +17,8 @@ defined('ABSPATH') || exit;
 /**
  * Category Badge
  */
-if (!function_exists('bootscore_category_badge')) :
-  function bootscore_category_badge() {
+if (!function_exists('wm_category_badge')) :
+  function wm_category_badge() {
     // Hide category and tag text for pages.
     if ('post' === get_post_type()) {
       echo '<p class="category-badge">';
@@ -27,7 +27,7 @@ if (!function_exists('bootscore_category_badge')) :
       foreach (get_the_category() as $category) {
         if (0 < $i) $thelist .= ' ';
         // Apply a filter to modify the class name
-        $class = apply_filters('bootscore/class/badge/category', 'badge bg-primary-subtle text-primary-emphasis text-decoration-none');
+        $class = apply_filters('', 'badge bg-primary-subtle text-primary-emphasis text-decoration-none');
         $thelist .= '<a href="' . esc_url(get_category_link($category->term_id)) . '" class="' . esc_attr($class) . '">' . $category->name . '</a>';
         $i ++;
       }
@@ -59,12 +59,12 @@ endif;
 /**
  * Date
  */
-if (!function_exists('bootscore_date')) :
+if (!function_exists('wm_date')) :
 
   /**
    * Prints HTML with meta information for the current post-date/time.
    */
-  function bootscore_date() {
+  function wm_date() {
     $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
     
     // Check if modified time is different from the published time
@@ -102,9 +102,9 @@ endif;
 /**
  * Author
  */
-if (!function_exists('bootscore_author')) {
+if (!function_exists('wm_author')) {
 
-  function bootscore_author() {
+  function wm_author() {
     $display_author = apply_filters('bootscore/meta/author', true);
 
     // Check if the filter returns false, if so, return early without displaying the author
@@ -138,11 +138,11 @@ add_filter('get_the_archive_description', function ($description) {
 /**
  * Comments
  */
-if (!function_exists('bootscore_comments')) :
+if (!function_exists('wm_comments')) :
   /**
    * Prints HTML with meta information for the categories, tags and comments.
    */
-  function bootscore_comments() {
+  function wm_comments() {
 
     if (!is_single() && !post_password_required() && (comments_open() || get_comments_number())) {
       echo ' <span class="comment-divider">|</span> ' . apply_filters('bootscore/icon/comments', '<i class="fa-regular fa-comments"></i>') . ' <span class="comments-link">';
@@ -169,11 +169,11 @@ endif;
 /**
  * Edit link
  */
-if (!function_exists('bootscore_edit')) :
+if (!function_exists('wm_edit')) :
   /**
    * Prints HTML with the edit link for the current post.
    */
-  function bootscore_edit() {
+  function wm_edit() {
 
     edit_post_link(
       sprintf(
@@ -198,11 +198,11 @@ endif;
 /**
  * Single comments count
  */
-if (!function_exists('bootscore_comment_count')) :
+if (!function_exists('wm_comment_count')) :
   /**
    * Prints HTML with the comment count for the current post.
    */
-  function bootscore_comment_count() {
+  function wm_comment_count() {
     if (!post_password_required() && (comments_open() || get_comments_number())) {
       echo ' <span class="comment-divider">|</span> ' . apply_filters('bootscore/icon/comments', '<i class="fa-regular fa-comments"></i>') . ' <span class="comments-link">';
 
@@ -220,11 +220,11 @@ endif;
 /**
  * Tags
  */
-if (!function_exists('bootscore_tags')) :
+if (!function_exists('wm_tags')) :
   /**
    * Prints HTML with meta information for the categories, tags, and comments.
    */
-  function bootscore_tags() {
+  function wm_tags() {
     // Hide category and tag text for pages.
     if ('post' === get_post_type()) {
 

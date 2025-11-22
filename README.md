@@ -1,7 +1,25 @@
-[![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)
-
-_s
+Watermelon
 ===
+
+Todo
+---------------
+
+### List
+
+Watermelon Todo List
+
+- Implement custom post type for
+	* FAQ
+	* Question Answer
+	* Portfolio, Projects, Services, 
+	* Clients
+[^1]: Customizer Settings to be implemented to switch on switch off. Slug and Name Input for Portfolio, Projects, Services or Others
+
+- Dummy Content
+- Implement meta theme-color globally (https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta/name/theme-color)
+- Implement btn default
+- Implement color scheme based on meta theme color 
+- index.php main blog loop is havign default container for overall width. Customizer select option needed (https://getbootstrap.com/docs/5.3/layout/containers/)
 
 Hi. I'm a starter theme called `_s`, or `underscores`, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
 
