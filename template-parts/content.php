@@ -9,8 +9,77 @@
 
 ?>
 
+	  <?php if ( is_singular() ) : ?>
+	  <div id="content" class="site-content <?= apply_filters('bootscore/class/container', 'container', 'single'); ?> <?= apply_filters('bootscore/class/content/spacer', 'pt-3 pb-5', 'single'); ?>">
+    <div id="primary" class="content-area">
+      
+      <?php do_action( 'bootscore_after_primary_open', 'single' ); ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( apply_filters('', 'card horizontal mb-4', 'index') ); ?>>
+      <?php wm_breadcrumb(); ?>
+
+      <div class="row">
+        <div class="<?= apply_filters('bootscore/class/main/col', 'col'); ?>">
+
+          <main id="main" class="site-main">
+
+            <div class="entry-header">
+              <?php //the_post(); ?>
+              <?php wm_category_badge(); ?>
+              <?php do_action( 'bootscore_before_title', 'single' ); ?>
+              <?php the_title('<h1 class="entry-title ' . apply_filters('bootscore/class/entry/title', '', 'single') . '">', '</h1>'); ?>
+              <?php do_action( 'bootscore_after_title', 'single' ); ?>
+              <p class="entry-meta">
+                <small class="text-body-secondary">
+                  <?php
+                 wm_date();
+                  wm_author();
+                  wm_comment_count();
+                  ?>
+                </small>
+              </p>
+              <?php bootscore_post_thumbnail(); ?>
+            </div>
+            
+            <?php do_action( 'bootscore_after_featured_image', 'single' ); ?>
+
+            <div class="entry-content">
+              <?php the_content(); ?>
+            </div>
+            
+            <?php do_action( 'bootscore_before_entry_footer', 'single' ); ?>
+
+            <div class="entry-footer clear-both">
+              <div class="mb-4">
+                <?php wm_tags(); ?>
+              </div>
+              <!-- Related posts using bS Swiper plugin -->
+              <?php if (function_exists('bootscore_related_posts')) bootscore_related_posts(); ?>
+              <nav aria-label="bs page navigation">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <?php previous_post_link('%link'); ?>
+                  </li>
+                  <li class="page-item">
+                    <?php next_post_link('%link'); ?>
+                  </li>
+                </ul>
+              </nav>
+              <?php comments_template(); ?>
+            </div>
+
+          </main>
+
+        </div>
+        <?php get_sidebar(); ?>
+      </div>
+
+    </div>
+  </div>
+	  
+						  
+						  <?php else : ?>
+						  
+						  <article id="post-<?php the_ID(); ?>" <?php post_class( apply_filters('', 'card horizontal mb-4', 'index') ); ?>>
 
                     <div class="<?= apply_filters('', 'row g-0', 'index'); ?>">
 
@@ -57,8 +126,7 @@
                               </p>
                             <?php endif; ?>
                           <?php endif; ?>
-
-                          <?php if (apply_filters('bootscore/loop/excerpt', true, 'index')) : ?>
+ <?php if (apply_filters('bootscore/loop/excerpt', true, 'index')) : ?>
                             <p class="<?= apply_filters('bootscore/class/loop/card-text/excerpt', 'card-text', 'index'); ?>">
                               <a class="text-body text-decoration-none" href="<?php the_permalink(); ?>">
                                 <?= strip_tags(get_the_excerpt()); ?>
@@ -74,6 +142,11 @@
                             </p>
                           <?php endif; ?>
 
+           
+					
+						  
+
+
                           <?php if (apply_filters('bootscore/loop/tags', true, 'index')) : ?>
                             <?php wm_tags(); ?>
                           <?php endif; ?>
@@ -86,3 +159,6 @@
                     </div><!-- row -->
                   </article><!-- article -->
 				  
+						  <?php endif; ?>
+						  
+

@@ -27,7 +27,7 @@ if (!function_exists('wm_breadcrumb')) :
         $cat_IDs = wp_get_post_categories(get_the_ID());
         foreach ($cat_IDs as $cat_ID) {
           $cat = get_category($cat_ID);
-          echo '<li class="breadcrumb-item"> href="' . get_term_link($cat->term_id) . '">' . $cat->name . '</a></li>';
+         echo '<li class="breadcrumb-item"><a class="' . apply_filters('bootscore/class/breadcrumb/item/link', '') . '" href="' . get_term_link($cat->term_id) . '">' . $cat->name . '</a></li>';
         }
       }
       // display current page name
@@ -39,5 +39,5 @@ if (!function_exists('wm_breadcrumb')) :
     }
   }
 
-  add_filter('breadcrumbs', 'breadcrumbs');
+  add_filter('breadcrumbs', 'wm_breadcrumb');
 endif;

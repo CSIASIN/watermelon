@@ -20,7 +20,9 @@ Watermelon Todo List
 - Implement btn default
 - Implement color scheme based on meta theme color 
 - index.php main blog loop is havign default container for overall width. Customizer select option needed (https://getbootstrap.com/docs/5.3/layout/containers/)
-
+- Read this https://wordpress.stackexchange.com/questions/254845/multiple-single-post-templates  https://make.wordpress.org/core/2016/11/03/post-type-templates-in-4-7/
+- Add customizer true and false for blog loop   <?php if (apply_filters('bootscore/loop/excerpt', false, 'index')) : ?> content.php
+-- Lets understand this in and out https://developer.wordpress.org/themes/patterns/introduction-to-patterns/
 Hi. I'm a starter theme called `_s`, or `underscores`, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
 
 My ultra-minimal CSS might make me look like theme tartare but that means less stuff to get in your way when you're designing your awesome theme. Here are some of the other more interesting things you'll find here:
