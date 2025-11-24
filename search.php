@@ -7,47 +7,70 @@
  * @package Watermelon_Wordpress_Theme
  */
 
+
+// Exit if accessed directly
+defined('ABSPATH') || exit;
+
 get_header();
 ?>
+  <div id="content" class="site-content <?= apply_filters('bootscore/class/container', 'container', 'search'); ?> <?= apply_filters('bootscore/class/content/spacer', 'pt-4 pb-5', 'search'); ?>">
+    <div id="primary" class="content-area">
+      
+      <?php do_action( 'bootscore_after_primary_open', 'search' ); ?>
+<?php echo wm_breadcrumb(); ?>
+      <div class="row">
+        <div class="<?= apply_filters('bootscore/class/main/col', 'col'); ?>">
 
-	<main id="primary" class="site-main">
+          <main id="main" class="site-main">
 
-		<?php if ( have_posts() ) : ?>
+            <?php if (have_posts()) : ?>
 
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'wm' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
+              <div class="entry-header">
+                <?php do_action( 'bootscore_before_title', 'search' ); ?>
+                <h1 class="entry-title <?= apply_filters('bootscore/class/entry/title', '', 'search'); ?>">
+                  <?php
+                  /* translators: %s: search query. */
+                  printf(esc_html__('Search Results for: %s', 'bootscore'), '<span class="text-body-secondary">' . get_search_query() . '</span>');
+                  ?>
+                </h1>
+                <?php do_action( 'bootscore_after_title', 'search' ); ?>
+              </div>
+            
+            <?php do_action( 'bootscore_before_loop', 'search' ); ?>
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+              <?php
+              /* Start the Loop */
+              while (have_posts()) :
+                the_post();
 
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
+                /**
+                 * Run the loop for the search to output the results.
+                 * If you want to overload this in a child theme then include a file
+                 * called content-search.php and that will be used instead.
+                 */
+                get_template_part('template-parts/content', 'search');
 
-			endwhile;
+              endwhile;
+            
+              do_action( 'bootscore_after_loop', 'search' );
 
-			the_posts_navigation();
+              wm_pagination();
 
-		else :
+            else :
 
-			get_template_part( 'template-parts/content', 'none' );
+              get_template_part('template-parts/content', 'none');
 
-		endif;
-		?>
+            endif;
+            ?>
+            
+          </main><!-- #main -->
 
-	</main><!-- #main -->
+        </div><!-- col -->
+        <?php get_sidebar(); ?>
+      </div><!-- row -->
 
+    </div><!-- #primary -->
+  </div><!-- #content -->
 <?php
-get_sidebar();
 get_footer();
+

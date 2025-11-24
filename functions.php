@@ -14,6 +14,7 @@ require_once('inc/globals.php');                // Global Variables
 require_once('inc/breadcrumb.php');             // Breadcrumbs
 require_once('inc/navmenu.php');                // Navmenu
 require_once('inc/navwalker.php');              // Bootstrap Navwalker
+require_once('inc/comments.php');               // Comments
 require_once('inc/pagination.php');             // Pagination
 require_once('inc/enqueue.php');                // Enqueue
 

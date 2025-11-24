@@ -15,26 +15,26 @@ defined('ABSPATH') || exit;
 /**
  * Comment reply
  */
-function bootscore_reply() {
+function wm_reply() {
 
   if (is_singular() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
   }
 }
 
-add_action('wp_enqueue_scripts', 'bootscore_reply');
+add_action('wp_enqueue_scripts', 'wm_reply');
 
 
 /**
  * Comments
  */
-if (!function_exists('bootscore_comment')) :
+if (!function_exists('wm_comment')) :
   /**
    * Template for comments and pingbacks.
    *
    * Used as a callback by wp_list_comments() for displaying the comments.
    */
-  function bootscore_comment($comment, $args, $depth) {
+  function wm_comment($comment, $args, $depth) {
     // $GLOBALS['comment'] = $comment;
 
     if ('pingback' == $comment->comment_type || 'trackback' == $comment->comment_type) : ?>
@@ -115,7 +115,7 @@ function custom_reply_title($defaults) {
  * Comment Cookie Checkbox
  * See https://github.com/bootscore/bootscore/issues/921
  */
-function bootscore_change_comment_form_cookies_consent($fields) {
+function wm_change_comment_form_cookies_consent($fields) {
   // Check if the "Show comments cookies opt-in checkbox" setting is enabled
   if (get_option('show_comments_cookies_opt_in')) {
     $consent           = empty($commenter['comment_author_email']) ? '' : ' checked="checked"';
@@ -130,7 +130,7 @@ function bootscore_change_comment_form_cookies_consent($fields) {
 
   return $fields;
 }
-add_filter('comment_form_default_fields', 'bootscore_change_comment_form_cookies_consent');
+add_filter('comment_form_default_fields', 'wm_change_comment_form_cookies_consent');
 
 
 /**
@@ -145,24 +145,24 @@ function open_comment_author_link_in_new_window($author_link) {
 /**
  * Open links in comments in new tab
  */
-if (!function_exists('bs_comment_links_in_new_tab')) :
-  function bs_comment_links_in_new_tab($text) {
+if (!function_exists('wm_comment_links_in_new_tab')) :
+  function wm_comment_links_in_new_tab($text) {
     return str_replace('<a', '<a target="_blank" rel=”nofollow”', $text);
   }
 
-  add_filter('comment_text', 'bs_comment_links_in_new_tab');
+  add_filter('comment_text', 'wm_comment_links_in_new_tab');
 endif;
 
 
 /**
  * Comment Button
  */
-if (!function_exists('bootscore_comment_button')) :
-  function bootscore_comment_button($args) {
+if (!function_exists('wm_comment_button')) :
+  function wm_comment_button($args) {
     $args['class_submit'] = 'btn btn-outline-primary'; // since WP 4.1
 
     return $args;
   }
 
-  add_filter('comment_form_defaults', 'bootscore_comment_button');
+  add_filter('comment_form_defaults', 'wm_comment_button');
 endif;

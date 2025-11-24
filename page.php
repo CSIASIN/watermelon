@@ -15,7 +15,13 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+  <div id="content" class="site-content <?= apply_filters('bootscore/class/container', 'container', 'page'); ?> <?= apply_filters('bootscore/class/content/spacer', 'pt-4 pb-5', 'page'); ?>">
+    <div id="primary" class="content-area">
+      
+      <?php do_action( 'bootscore_after_primary_open', 'page' ); ?>
+<?php echo wm_breadcrumb(); ?>
+      <div class="row">
+        <div class="<?= apply_filters('bootscore/class/main/col', 'col'); ?>">
 
 		<?php
 		while ( have_posts() ) :
@@ -31,8 +37,12 @@ get_header();
 		endwhile; // End of the loop.
 		?>
 
-	</main><!-- #main -->
+	   </div>
+        <?php get_sidebar(); ?>
+      </div>
+
+    </div>
+  </div>
 
 <?php
-get_sidebar();
 get_footer();

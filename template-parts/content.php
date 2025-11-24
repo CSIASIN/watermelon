@@ -76,7 +76,32 @@
     </div>
   </div>
 	  
-						  
+							  <?php elseif ( is_singular() && is_page()) : ?>
+							  
+							            <main id="main" class="site-main">
+
+            <div class="entry-header">
+              <?php the_post(); ?>
+              <?php do_action( 'bootscore_before_title', 'page' ); ?>
+              <?php the_title('<h1 class="entry-title ' . apply_filters('bootscore/class/entry/title', '', 'page') . '">', '</h1>'); ?>
+              <?php do_action( 'bootscore_after_title', 'page' ); ?>
+              <?php wm_post_thumbnail(); ?>
+            </div>
+            
+            <?php do_action( 'bootscore_after_featured_image', 'page' ); ?>
+
+            <div class="entry-content">
+              <?php the_content(); ?>
+            </div>
+            
+            <?php do_action( 'bootscore_before_entry_footer', 'page' ); ?>
+
+            <div class="entry-footer">
+              <?php comments_template(); ?>
+            </div>
+
+          </main>
+		  
 						  <?php else : ?>
 						  
 						  <article id="post-<?php the_ID(); ?>" <?php post_class( apply_filters('', 'card horizontal mb-4', 'index') ); ?>>

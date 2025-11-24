@@ -1,0 +1,14 @@
+bootscore_category_badge wm_category_badge
+bootscore_date wm_date
+bootscore_author wm_author
+bootscore_comments wm_comments
+bootscore_comment_count wm_comment_count
+bootscore_edit wm_edit
+bootscore_tags wm_tags
+bootscore_pagination wm_pagination
+the_breadcrumb wm_breadcrumb 
+bootscore_comment wm_comment
+bootscore_change_comment_form_cookies_consent wm_change_comment_form_cookies_consent
+bs_comment_links_in_new_tab wm_comment_links_in_new_tab
+bootscore_comment_button wm_comment_button 
+bootscore_reply wm_reply
