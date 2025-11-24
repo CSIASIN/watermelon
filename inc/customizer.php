@@ -28,8 +28,8 @@ function wm_site_logo($wp_customize)
 	$wp_customize->add_setting(
 		'site_logo',
 		array(
-			// 'type' => 'theme_mod',
-			// 'default' => '',
+			'type' => 'theme_mod',
+			'default' => '',
 			'transport' => 'postMessage'
 		)
 	); //Setting for logo uploader
@@ -52,16 +52,19 @@ add_action('customize_register', 'wm_site_logo');
 
 
 
-require_once('wm_customizer_panel_setting/header_js.php');
-require_once('wm_customizer_panel_setting/footer_js.php');
-require_once('wm_customizer_panel_setting/layout.php');
+require_once('customizer/header_js.php');
+require_once('customizer/footer_js.php');
+// require_once('customizer/layout.php');
 
-require_once('wm_customizer_panel_setting/theme_mode_toggle.php');
+require_once('customizer/theme_mode_toggle.php');
 
-require_once('wm_customizer_panel_setting/responsive.php');
-require_once('wm_customizer_panel_setting/colors.php');
-require_once('wm_customizer_panel_setting/menu.php');
-require_once('wm_customizer_panel_setting/logo.php');
+// require_once('customizer/responsive.php');
+require_once('customizer/colors.php');
+// require_once('customizer/menu.php');
+// require_once('customizer/logo.php');
+
+require_once('customizer/page-settings.php');
+require_once('customizer/navbar.php');
 
 
 
