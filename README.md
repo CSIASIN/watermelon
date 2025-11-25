@@ -25,6 +25,11 @@ Watermelon Todo List
 - Lets understand this in and out https://developer.wordpress.org/themes/patterns/introduction-to-patterns/
 - Search result page to have breadcrumbs and search summary
 - search and replace fa class with svg
+
+
+### Customizer
+- https://make.wordpress.org/themes/2015/05/07/customizer-tutorials-and-documentation/
+
 Hi. I'm a starter theme called `_s`, or `underscores`, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
 
 My ultra-minimal CSS might make me look like theme tartare but that means less stuff to get in your way when you're designing your awesome theme. Here are some of the other more interesting things you'll find here:

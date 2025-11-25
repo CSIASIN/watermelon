@@ -50,8 +50,6 @@
   <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'wm'); ?></a>
 
-<?php print_r(WMCOLOR); ?>
-
 
     <header id="masthead" class="sticky-top bg-body-tertiary site-header">
 

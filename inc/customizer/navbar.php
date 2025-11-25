@@ -9,6 +9,31 @@ function wm_customizer_navbar($wp_customize)
             'priority' => 30,
         )
     );
+
+
+    $wp_customize->add_setting(
+        'navbar_color',
+        array(
+            'default'   => '#673AB7',
+            'transport' => 'refresh',
+            'sanitize_callback' => 'sanitize_text_field',
+        )
+    );
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'navbar_color',
+            array(
+                'label'       => __('Navbar Color'),
+                'description' => __('Select the navbar color for the site.'),
+                'section' => 'navbar_section',
+                'settings' => 'navbar_color',
+            )
+        )
+    );
+
+
     $wp_customize->add_setting(
         'navbar_design',
         array(

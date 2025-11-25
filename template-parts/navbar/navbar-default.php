@@ -4,8 +4,8 @@
  * Template part for displaying the default navbar
  */
 ?>
-<nav id="nav-main" class="navbar navbar-expand-lg" style="background-color:#ffccaa;">
-
+<nav id="nav-main" class="navbar navbar-expand-lg" style="background-color:<?php echo get_theme_mod('navbar_color') ?>;">
+    <!-- <nav id="nav-main" class="navbar navbar-expand-lg" style="background-color:#ffccaa;"> -->
     <div class="<?= apply_filters('bootscore/class/container', 'container', 'header'); ?>">
 
         <?php do_action('bootscore_before_navbar_brand'); ?>

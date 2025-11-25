@@ -32,5 +32,23 @@ function wm_customizer_colors($wp_customize)
             )
         )
     );
+
+    $wp_customize->add_control(
+        'colors_setting_predefined',
+        array(
+            'label'    => __('Predefined Colors'),
+            'section'  => 'colors_section',
+            'settings' => 'colors_setting',
+            'type'     => 'radio',
+            'choices'  => array(
+                '#673AB7' => '#673AB7',
+                '#F44336' => '#F44336',
+                '#2196F3' => '#2196F3',
+                '#4CAF50' => '#4CAF50',
+                '#FF9800' => '#FF9800',
+                '#000000' => '#000000',
+            ),
+        )
+    );
 }
 add_action('customize_register', 'wm_customizer_colors');
