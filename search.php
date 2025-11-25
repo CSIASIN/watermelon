@@ -17,7 +17,7 @@ get_header();
     <div id="primary" class="content-area">
       
       <?php do_action( 'bootscore_after_primary_open', 'search' ); ?>
-<?php echo wm_breadcrumb(); ?>
+		<?php echo wm_breadcrumb(); ?>
       <div class="row">
         <div class="<?= apply_filters('bootscore/class/main/col', 'col'); ?>">
 

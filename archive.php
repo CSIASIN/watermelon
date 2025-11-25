@@ -9,8 +9,24 @@
 
 get_header();
 ?>
+  <div id="content" class="site-content <?= apply_filters('bootscore/class/container', 'container', 'archive'); ?> <?= apply_filters('bootscore/class/content/spacer', 'pt-4 pb-5', 'archive'); ?>">
+    <div id="primary" class="content-area">
+      
+      <?php do_action('bootscore_after_primary_open', 'archive'); ?>
+<?php echo wm_breadcrumb(); ?>
+      <div class="row">
+        <div class="<?= apply_filters('bootscore/class/main/col', 'col') ?>">
 
-	<main id="primary" class="site-main">
+          <main id="main" class="site-main">
+
+            <div class="entry-header">
+              <?php do_action( 'bootscore_before_title', 'archive' ); ?>
+              <?php the_archive_title('<h1 class="entry-title ' . apply_filters('bootscore/class/entry/title', '', 'archive') . '">', '</h1>'); ?>
+              <?php do_action( 'bootscore_after_title', 'archive' ); ?>
+              <?php the_archive_description( '<div class="archive-description ' . apply_filters('bootscore/class/entry/archive-description', '') . '">', '</div>' ); ?>
+            </div>
+            
+	
 
 		<?php if ( have_posts() ) : ?>
 
@@ -44,8 +60,16 @@ get_header();
 		endif;
 		?>
 
-	</main><!-- #main -->
+	
+            <div class="entry-footer">
+              <?php wm_pagination(); ?>
+            </div>
 
-<?php
-get_sidebar();
-get_footer();
+          </main>
+
+        </div>
+        <?php get_sidebar(); ?>
+      </div>
+
+    </div>
+  </div>

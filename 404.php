@@ -10,7 +10,17 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main container">
+<?php echo wm_breadcrumb(); ?>
+
+<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Oops! That page can&rsquo;t be found.</h1>
+        <p class="col-md-8 fs-4">It looks like nothing was found at this location. Maybe try one of the links below or a search?</p> 
+		
+		<a class="btn btn-primary btn-lg" href="<?= esc_url(home_url()); ?>" role="button"><?php esc_html_e('Back Home &raquo;', 'wm'); ?></a>
+    </div>
+</div>
 
 		<section class="error-404 not-found">
 			<header class="page-header">
@@ -50,7 +60,7 @@ get_header();
 
 					the_widget( 'WP_Widget_Tag_Cloud' );
 					?>
-
+<a class="btn btn-outline-primary" href="<?= esc_url(home_url()); ?>" role="button"><?php esc_html_e('Back Home &raquo;', 'bootscore'); ?></a>
 			</div><!-- .page-content -->
 		</section><!-- .error-404 -->
 
